@@ -388,6 +388,8 @@ class Executor:
     ) -> TranscribeAsyncResponse:
         params = request.model_dump(exclude_none=True, exclude={"output"})
 
+        self.logger.info("Transcribing URL", extra={"url": request.url})
+
         try:
             # callback is mandatory, so it always returns accepted response
             response = self.deepgram.listen.v1.media.transcribe_url(**params)
@@ -400,6 +402,8 @@ class Executor:
             raise err
 
     def transcribe_file(self, request: TranscribeFileRequest) -> TranscribeResponse:
+        self.logger.info("Transcribing file", extra={"source": request.input})
+
         with tempfile.NamedTemporaryFile(delete=True) as file:
             self.loader.load(request.input, Path(file.name))
 
@@ -428,6 +432,8 @@ class Executor:
     def transcribe_file_async(
         self, request: TranscribeFileAsyncRequest
     ) -> TranscribeAsyncResponse:
+        self.logger.info("Transcribing file", extra={"source": request.input})
+
         with tempfile.NamedTemporaryFile(delete=True) as file:
             self.loader.load(request.input, Path(file.name))
 
