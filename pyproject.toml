@@ -1,6 +1,6 @@
 [project]
 name = "restate-deepgram"
-version = "0.0.2"
+version = "0.0.3"
 description = "A Restate service for Deepgram"
 readme = "README.md"
 authors = [
