@@ -4,9 +4,7 @@ import typing
 from pathlib import Path, PurePosixPath
 from typing import Protocol
 
-from deepgram import (
-    DeepgramClient,
-)
+from deepgram import DeepgramClient
 from deepgram.core import ApiError, RequestOptions
 from deepgram.listen.v1.media.types.media_transcribe_request_callback_method import (
     MediaTranscribeRequestCallbackMethod,
