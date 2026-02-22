@@ -316,7 +316,7 @@ class TranscribeAsyncResponse(BaseModel):
     request_id: str
 
 
-class Loader(typing.Protocol):
+class Loader(Protocol):
     def load(self, ref: AnyUrl | PurePosixPath, dst: Path): ...
 
 
